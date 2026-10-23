@@ -3,8 +3,12 @@
     <link rel="stylesheet" href="CSS_GERAL.CSS">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Gerenciador para armazenar tarefas"> <!--descrição do site-->
+    <meta name="keyword" content="tarefas, lista de tarefas, gerenciador, ToDo"> <!--palavras chave pra encontrá-lo no google mais facilmente-->
+    <meta name="author" content="Arthur"> <!--Autor-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENAI INCLUSIVO | Login</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Gerenciador de tarefas</title>
 </head>
 <body>
     <main class="container">
@@ -17,12 +21,15 @@
         <div>
             
         </div>
-        <form action="">
+        <form id="task-form">
             <input type="text" placeholder="digite uma tarefa">
             <input type="text" placeholder="descricao da tarefa">
-            <button>oie</button>
+            <button type="submit">Adicionar Tarefa</button>
         </form>
+        <ul id="task-list">
+        </ul>
         </main>
+        <script src="javascript.js"></script>
 </body>
 
 </html>

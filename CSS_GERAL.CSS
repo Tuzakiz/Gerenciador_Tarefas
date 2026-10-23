@@ -31,4 +31,54 @@ input {
     align-items: center;
 }
 
+#task-form input {
+    box-sizing: border-box;
+    padding: 0px, 40px;
+    font-size: 16px;
+    border: 2px solid, white;
+    border-radius: 8px;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+
+#task-form input[type='text']:focus{
+    outline: none;
+    border-color: rgb(53, 53, 53);
+    box-shadow: 0 6px 10px rgba(94, 97, 95, 0.12);
+}
+
+        /* --------------------BUTÃO---------------------- */
+#task-form button {
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 6px;
+    cursor: pointer;
+
+    font-size: 12px;
+    font-weight: 690;
+    color: linear-gradient(45deg, rgb(0, 0, 0) 40%, white 60%);
+
+    background: linear-gradient(0deg, white 70%, rgb(223, 223, 223) 30%);
+}
+
+#task-form button:hover{
+    border-color: rgb(206, 206, 206);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(47,173,91,0.20);
+    opacity: 0.98;
+}
+
+#task-form button:active{
+    border-color: rgb(204, 255, 252);
+    transform: translateY(0);
+    box-shadow: 0 12px 28px rgba(47,173,91,0.20);
+    opacity: 0.98;
+}
+
+/* /========================= Lista =========================/ */
+#task-list {
+    width: 500px;
+    list-style: none;
+    padding: 0;
+}
 /* justifu :verticalalligh items horizontal */
