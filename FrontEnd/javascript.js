@@ -17,12 +17,20 @@ form.addEventListener('submit', async(e) => {
         });
         if (!res.ok) throw new Error("erro ao adicionar tarefa") 
             const task = await res.json();
-            form.reset()/
+            form.reset()
             
-            addTaskToUI
+            addTaskToUI(task);
     } 
     catch (err) {    
-        alert('erro ao salvar tarefa' + err.message);
+        alert('error saving task' + err.message);
     }
 
 });
+
+function addTaskToUI(task) {
+    const li = document.createElement.apply('li');
+
+    li.innerHTML = `<span>$(Text)<span>
+    <div>
+    <button onclick='toggleComplete(${task.id})'></button>`
+}
