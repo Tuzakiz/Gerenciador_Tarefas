@@ -1,7 +1,7 @@
 const apiUrl = 'http://localhost:3000/tasks';
 
-const form = document.getElementById('task-add');
-const list = document.getElementById('task-list');
+const form = document.getElementById('task-form');
+const taskList = document.getElementById('task-list');
 
 form.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -15,11 +15,13 @@ form.addEventListener('submit', async(e) => {
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({title, description})
         });
-        if (!res.ok) throw new Error("erro ao adicionar tarefa") 
+
+        if (!res.ok) throw new Error("erro ao adicionar tarefa")
+
             const task = await res.json();
             form.reset()
             
-            addTaskToUI(task);
+            addTaskToUl(task);
     } 
     catch (err) {    
         alert('error saving task' + err.message);
@@ -27,15 +29,19 @@ form.addEventListener('submit', async(e) => {
 
 });
 
-function addTaskToUI(task) {
-    const li = document.createElement.apply('li');
+function addTaskToUl(task){
+    const li = document.createElement('li');
+    li.className = task.completed ? completed : "";
 
-    li.innerHTML = `<span>$(Text)<span>
+    const description = task.description ? task.description.trim() : "";
+    const text = description ? `${task.title} - ${task.description}` : task.title;
+
+    li.innerHTML = `<span>${text}</span>
     <div>
-    <button onclick='toggleComplete(${task.id}, ${task.completed})'></button>
+    <button onclick='toggleComplete(${task.id}, ${task.completed})'>✔️</button>
     <button onclick='deleteTask(${task.id})'>🗑️</button>
     <div>`;
-    taskList.appendchild(li);
+    taskList.appendChild(li);
 };
 
 async function loadTasks(){
@@ -59,13 +65,13 @@ async function toggleComplete(id, completed) {
         const res = await fetch(`${apiUrl}/${id}`);
         const task = await res.json();
 
-        await fetch (`${apiUrl}/${id}`, {
+        await fetch(`${apiUrl}/${id}`, {
             method: 'PUT',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({
-                title: task.title,
-                description: task.description,
-                completed: !completed
+            title: task.title,
+            description: task.description,
+            completed: !completed
             })
         });
         loadTasks();
@@ -81,8 +87,11 @@ async function deleteTask(id) {
 
         loadTasks();
 
+        document.getElementById('');
         
     }catch (err){
         alert('Erro ao atualizar tarefa: ' + err.message);
     }
 };
+
+loadTasks();
